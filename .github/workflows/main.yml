@@ -13,7 +13,7 @@ jobs:
         image: postgres:13.10
         env:
           POSTGRES_USER: django_user
-          POSTGRESS_PASSWORD: django_password
+          POSTGRES_PASSWORD: django_password
           POSTGRES_DB: django_db
         ports:
           - 5432:5432
