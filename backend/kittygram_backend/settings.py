@@ -98,7 +98,7 @@ STATIC_ROOT = BASE_DIR / 'collected_static'
 
 MEDIA_URL = '/media/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = '/var/www/kittigram/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
