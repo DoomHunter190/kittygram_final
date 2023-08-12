@@ -3,6 +3,7 @@ version: '3'
 volumes:
   pg_data_production:
   static_volume:
+  media_volume:
 services:
   db:
     image: postgres:13.10
@@ -14,6 +15,7 @@ services:
     env_file: .env
     volumes:
       - static_volume:/backend_static
+      - media_volume:/media
   frontend:
     image: doomhunter190/kittygram_frontend
     env_file: .env
@@ -25,5 +27,6 @@ services:
     env_file: .env
     volumes:
       - static_volume:/static/
+      - media_volume:/media
     ports:
       - 9000:80
