@@ -23,7 +23,7 @@ services:
     volumes:
       - static:/frontend_static
   gateway:
-    image: doomhunter190/kittygram_nginx
+    image: doomhunter190/kittygram_gateway
     env_file: .env
     volumes:
       - static:/static
