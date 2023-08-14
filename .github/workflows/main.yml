@@ -2,8 +2,6 @@ name: Main Taski workflow
 
 on:
   push:
-    branches:
-      - main
 
 jobs:
   tests:
@@ -59,6 +57,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: ./backend/
+          if: ${{github.ref=='refs/heads/main'}}
           push: true
           tags: doomhunter190/kittygram_backend:latest
   frontend_tests:
@@ -98,6 +97,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: ./frontend/
+          if: ${{github.ref=='refs/heads/main'}}
           push: true
           tags: doomhunter190/kittygram_frontend:latest
   build_gateway_and_push_to_docker_hub:
@@ -117,6 +117,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: ./nginx/
+          if: ${{github.ref=='refs/heads/main'}}
           push: true
           tags: doomhunter190/kittygram_gateway:latest
   deploy:
