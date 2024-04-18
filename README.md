@@ -67,8 +67,8 @@ After=network.target
 
 [Service]
 User=yc-user 
-WorkingDirectory=/home/yc-user/kittygram/backend/
-ExecStart=/home/yc-user/kittygram/backend/venv/bin/gunicorn --bind 0.0.0.0.0:8000 backend.wsgi
+WorkingDirectory=/home/yc-user/social-network/backend/
+ExecStart=/home/yc-user/social-network/backend/venv/bin/gunicorn --bind 0.0.0.0.0:8000 backend.wsgi
 [Install]
 WantedBy=multi-user.target  
 ```
@@ -90,9 +90,9 @@ WantedBy=multi-user.target
 ***
 
 ### Создайте статику внешнего интерфейса приложения.
-В каталоге ***kittygram/frontend*** выполните:  
+В каталоге ***social-network/frontend*** выполните:  
 ```npm run build```
-```sudo cp -r /home/yc-user/kittygram/frontend/build/. /var/www/kittygram/```  
+```sudo cp -r /home/yc-user/social-network/frontend/build/. /var/www/social-network/```  
 Настройка для обработки статического интерфейса внешнего приложения.:   
 ``` sudo nano /etc/nginx/sites-enabled/default```  
 Удалите все настройки из файла и добавьте свои:  
@@ -110,10 +110,10 @@ server {
     }
 
     location /media/ {
-        alias /var/www/kittygram/media/;
+        alias /var/www/social-network/media/;
     }
     location / {
-        root /var/www/kittygram;
+        root /var/www/social-network;
         index index.html index.html index.htm;
         try_files $uri /index.html;
     }
@@ -126,7 +126,7 @@ server {
 Активировав виртуальную среду, запустите команду:  
 ```python manage.py collectstatic```
 Перейдите в корень проекта и выполните команду:  
-```sudo cp -r kittygram/backend/static_backend/ /var/www/kittygram/```  
+```sudo cp -r social-network/backend/static_backend/ /var/www/social-network/```  
 ***
 ### Настроить шифрование
 Установите ***certbot***:  
